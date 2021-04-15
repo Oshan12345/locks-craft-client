@@ -1,0 +1,23 @@
+.service-card-body:hover{
+    
+          transform: scale(1.05);
+          transition: transform .7s ease-in;
+          
+}
+
+.service-card-body img:hover{
+    transform: scale(1.2);
+     transition: transform .7s ease-in;
+}
+
+.service-card-body{
+border-radius: 6px;
+background: #ffffff;
+/* box-shadow:  6px 6px 12px #a5a5a5,
+             -6px -6px 12px #ffffff; */
+}
+.service-section{
+  background-image: url("https://images.pexels.com/photos/355465/pexels-photo-355465.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
