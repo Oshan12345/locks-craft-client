@@ -1,7 +1,8 @@
 .service-card-body:hover{
     
-          transform: scale(1.05);
+          transform: scale(1.10);
           transition: transform .7s ease-in;
+
           
 }
 
@@ -11,13 +12,38 @@
 }
 
 .service-card-body{
+
 border-radius: 6px;
-background: #ffffff;
+background:white;
 /* box-shadow:  6px 6px 12px #a5a5a5,
              -6px -6px 12px #ffffff; */
+}
+.service-card-body-text{
+background:url('../../images/key.png');
+background-size: 37%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .service-section{
   background-image: url("https://images.pexels.com/photos/355465/pexels-photo-355465.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+.service-icon
+{
+  height: auto;
+  padding:10px;
+  margin:10px;
+width: 50%;
+background: rgba(0, 0, 0, 0.8);
+border-radius: 50%;
+border: 1px solid #1D9AF2;
+opacity: 1;
+animation: spinner4 1000ms linear infinite;
+}
+@keyframes spinner4 {
+to {
+transform: scale(1.2);
+opacity: 0;
+}
 }

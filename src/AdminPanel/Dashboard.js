@@ -3,13 +3,13 @@ import LeftSidebar from "./LeftSidebar";
 
 const Dashboard = () => {
   return (
-    <div class="d-flex">
+    <div className="d-flex">
       <LeftSidebar />
       <div
-        class="p-4"
+        className="p-4"
         style={{ background: "aliceblue", width: "-webkit-fill-available" }}
       >
-        jdfhsd fsdf sdfds
+        here i will use graph chart
       </div>
     </div>
   );

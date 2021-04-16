@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./banner.css";
 const Banner = () => {
   const bannerData = [
     {
@@ -10,125 +10,123 @@ const Banner = () => {
              Excepturi enim molestiae in nisi esse placeat reprehenderit
               animi facilis accusantium quod?`,
       flexDirection: "flex-row-reverse",
-      bgColor: "#ba896b36",
     },
     {
       id: "banner-2",
       image:
         "https://images.pexels.com/photos/279810/pexels-photo-279810.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       text: ` Excepturi enim molestiae in nisi esse placeat reprehenderit
-                animi facilis accusantium quod? Lorem ipsum dolor,
-                 sit amet consectetur adipisicing elit.`,
+              animi facilis accusantium quod? Lorem ipsum dolor,
+              sit amet consectetur adipisicing elit.`,
       flexDirection: "",
-      bgColor: "#4f453c14",
     },
     {
       id: "banner-3",
       image:
         "https://images.pexels.com/photos/411227/pexels-photo-411227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       text: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-       Ipsam ab consequatur maiores minima molestias impedit, velit 
-       ipsum in sequi hic quod modi? Ab eligendi, officiis laudantium, 
-       incidunt perspiciatis dignissimos pariatur libero voluptatem`,
+       Ipsam ab consequatur maiores minima molestias impedit, velit`,
       flexDirection: "flex-row-reverse",
-      bgColor: "#4242421a",
     },
   ];
 
   return (
-    <div
-      id="carouselExampleIndicators"
-      class="carousel slide"
-      data-bs-ride="carousel"
-    >
-      <div class="carousel-indicators">
-        <button
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide-to="0"
-          class="active"
-          aria-current="true"
-          aria-label="Slide 1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide-to="1"
-          aria-label="Slide 2"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide-to="2"
-          aria-label="Slide 3"
-        ></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <CarosalItem props={bannerData[0]} />
-        </div>
-        <div class="carousel-item">
-          <CarosalItem props={bannerData[1]} />
-        </div>
-        <div class="carousel-item">
-          <CarosalItem props={bannerData[2]} />
-        </div>
-      </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="prev"
+    <div className="home-page-banner">
+      <div
+        id="carouselExampleIndicators"
+        className="carousel slide"
+        data-bs-ride="carousel"
       >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+        <div className="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            className="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div className="carousel-inner">
+          <div className="carousel-item active">
+            <CarosalItem props={bannerData[0]} />
+          </div>
+          <div className="carousel-item">
+            <CarosalItem props={bannerData[1]} />
+          </div>
+          <div className="carousel-item">
+            <CarosalItem props={bannerData[2]} />
+          </div>
+        </div>
+        <button
+          className="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button
+          className="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
   );
 };
 
 const CarosalItem = ({ props }) => {
-  console.log(props);
-  const { image, text, flexDirection, bgColor } = props;
-
+  const { image, text, flexDirection } = props;
+  // style={{ backgroundColor: bgColor }}
   return (
-    <div class="card mb-3 border-0" style={{ backgroundColor: bgColor }}>
-      <div class={`row g-0 ${flexDirection}`}>
-        <div class="col-md-5">
+    <div className="card mb-3 border-0 bg-transparent">
+      <div className={`row g-0 ${flexDirection}`}>
+        <div className="col-md-5 d-flex justify-content-center align-items-center">
           <img
             src={image}
             alt="..."
-            class="w-100 "
-            style={{ objectFit: "cover", height: 380 }}
+            className=" m-auto p-3"
+            style={{ objectFit: "cover", height: 390, width: "90%" }}
           />
         </div>
-        <div class="col-md-7 ">
-          <div class="card-body d-flex justify-content-center align-items-center h-100">
+        <div className="col-md-7 p-3">
+          <div className="card-body d-flex justify-content-center align-items-center h-100 home-page-banner-card-body ">
             <div>
-              <h1
-                class="card-title"
-                style={{
-                  background:
-                    "-webkit-linear-gradient(45deg, #09009f, #00ff95 )",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
+              <h2 className="card-title animate__animated animate__bounce">
                 {" "}
                 We provide locksmith service 7/24
-              </h1>
-              <p class="card-text">{text}</p>
-              <div class="card-text text-center">
-                <button class="btn btn-primary">get a deal</button>
+              </h2>
+              <p className=" fs-5 p-3 animate__animated animate__tada">
+                {text}
+              </p>
+              <div className="card-text text-center">
+                <button className="btn btn-primary banner-button animate__animated animate__shakeX">
+                  get a deal
+                </button>
               </div>
             </div>
           </div>

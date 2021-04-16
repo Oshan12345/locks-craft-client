@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div class="container-fluid ">
-        <a class="navbar-brand text-dark" href="#">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div className="container-fluid ">
+        <a className="navbar-brand text-dark" href="#">
           Navbar
         </a>
         <button
-          class="navbar-toggler "
+          className="navbar-toggler "
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -17,41 +17,44 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
         <div
-          class="collapse navbar-collapse justify-content-center"
+          className="collapse navbar-collapse justify-content-center"
           id="navbarSupportedContent"
         >
-          <ul class="navbar-nav mb-2 mb-lg-0 ">
-            <li class="nav-item mx-2 ">
+          <ul className="navbar-nav mb-2 mb-lg-0 ">
+            <li className="nav-item mx-2 ">
               <Link
-                class="nav-link active text-dark"
+                className="nav-link active text-dark"
                 aria-current="page"
                 to="/"
               >
                 Home
               </Link>
             </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link text-dark" href="#">
+            <li className="nav-item mx-2">
+              <a className="nav-link text-dark" href="#">
                 About
               </a>
             </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link text-dark" href="#">
+            <li className="nav-item mx-2">
+              <a className="nav-link text-dark" href="#">
                 blog
               </a>
             </li>
-            <li class="nav-item mx-2">
-              <Link class="nav-link text-dark" to="/dashboard">
+            <li className="nav-item mx-2">
+              <Link className="nav-link text-dark" to="/dashboard">
                 Admin
               </Link>
             </li>
           </ul>
         </div>
         <div>
-          <button class="btn btn-warning">Logout</button>
+          <button className="btn btn-warning">Logout</button>
+          <Link to="/login" className="text-dark">
+            <p>Login</p>
+          </Link>
         </div>
       </div>
     </nav>

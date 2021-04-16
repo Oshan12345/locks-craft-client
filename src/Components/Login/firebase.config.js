@@ -1,10 +1,10 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyCRx_Q6ttjS1LPVrcio1Vew7UJb8J5_dyA",
-  authDomain: "book-voice-13bbb.firebaseapp.com",
-  projectId: "book-voice-13bbb",
-  storageBucket: "book-voice-13bbb.appspot.com",
-  messagingSenderId: "844965693241",
-  appId: "1:844965693241:web:ef9eed8b8629a09dd80ae8",
+  apiKey: "AIzaSyA8NmfHgxYFtSmiFT1SmWnJ6rSH_Xrlvig",
+  authDomain: "locks-craft.firebaseapp.com",
+  projectId: "locks-craft",
+  storageBucket: "locks-craft.appspot.com",
+  messagingSenderId: "341119521485",
+  appId: "1:341119521485:web:00fdac8933838059234f84",
 };
 
 export default firebaseConfig;

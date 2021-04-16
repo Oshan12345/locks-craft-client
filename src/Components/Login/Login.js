@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { UserContext } from "../../App";
 import { googleSignIn } from "./LoginMethods";
-
+import axios from "axios";
 const Login = () => {
   const { setUser } = useContext(UserContext);
   let history = useHistory();
@@ -11,8 +11,21 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     googleSignIn().then((res) => {
+      console.log(res);
       setUser(res);
       history.replace(from);
+      const { name, email } = res;
+      axios
+        .post("http://localhost:4000/add-user", {
+          name,
+          email,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     });
   };
   return (

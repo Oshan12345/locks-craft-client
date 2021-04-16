@@ -12,6 +12,7 @@ const Signin = () => {
 
   const handleGoogleSignIn = () => {
     googleSignIn().then((res) => {
+      console.log(res);
       setUser(res);
       history.replace(from);
     });

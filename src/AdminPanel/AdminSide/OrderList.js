@@ -3,30 +3,30 @@ import LeftSidebar from "../LeftSidebar";
 
 const OrderList = () => {
   return (
-    <div class="d-flex">
+    <div className="d-flex">
       <LeftSidebar />
       <div
-        class="p-4"
+        className="p-4"
         style={{ background: "aliceblue", width: "-webkit-fill-available" }}
       >
-        <div class="table-responsive">
-          <table class="table table-info table-striped table-hover">
-            <thead class="table-dark">
+        <div className="table-responsive">
+          <table className="table table-info table-striped table-hover">
+            <thead className="table-dark">
               <tr>
                 <th scope="col">
-                  <i class="bi bi-file-earmark-person-fill"></i> Name
+                  <i className="bi bi-file-earmark-person-fill"></i> Name
                 </th>
                 <th scope="col">
-                  <i class="bi bi-envelope-fill"></i> Email
+                  <i className="bi bi-envelope-fill"></i> Email
                 </th>
                 <th scope="col">
-                  <i class="bi bi-envelope-fill"></i> Service
+                  <i className="bi bi-envelope-fill"></i> Service
                 </th>
                 <th scope="col">
-                  <i class="bi bi-credit-card-2-front-fill"></i> Pay With
+                  <i className="bi bi-credit-card-2-front-fill"></i> Pay With
                 </th>
                 <th scope="col">
-                  <i class="bi bi-layers-half"></i> Status
+                  <i className="bi bi-layers-half"></i> Status
                 </th>
               </tr>
             </thead>
@@ -37,9 +37,9 @@ const OrderList = () => {
                 <td>Otto</td>
                 <td>@mdo</td>
                 <td>
-                  <div class="dropdown">
+                  <div className="dropdown">
                     <button
-                      class="btn btn-primary dropdown-toggle"
+                      className="btn btn-primary dropdown-toggle"
                       type="button"
                       id="dropdownMenuButton1"
                       data-bs-toggle="dropdown"
@@ -48,21 +48,21 @@ const OrderList = () => {
                       status
                     </button>
                     <ul
-                      class="dropdown-menu"
+                      className="dropdown-menu"
                       aria-labelledby="dropdownMenuButton1"
                     >
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <a className="dropdown-item" href="#">
                           Pending
                         </a>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <a className="dropdown-item" href="#">
                           On Going
                         </a>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <a className="dropdown-item" href="#">
                           Done
                         </a>
                       </li>

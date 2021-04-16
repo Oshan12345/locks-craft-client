@@ -1,36 +1,44 @@
 import React, { useState } from "react";
 import LeftSidebar from "../LeftSidebar";
-
+import axios from "axios";
 const AddService = () => {
-  const [productImg, setProductImage] = useState("");
-  const [productData, setProductData] = useState({
-    book_name: "",
-    author_name: "",
-    book_price: 0,
-    book_description: "",
-    book_image: " ",
+  const [serviceImg, setServiceImage] = useState("");
+  const [serviceData, setServiceData] = useState({
+    title: "",
+    categoryName: "",
+    price: 0,
+    description: "",
+    image: " ",
   });
   const [confirmMessage, setConfirmMessage] = useState("");
-
+  //  title
+  //         category: [
+  //           {
+  //             categoryName: "name",
+  //             price: 23,
+  //           },
+  //         ],
+  //         image
+  //         description
   const handleSubmit = (e) => {
     e.preventDefault();
     var imageData = new FormData();
     imageData.set("key", "2eb131723a878591ca75a07777111d17");
-    imageData.append("image", productImg);
-    //    axios
-    //      .post("https://api.imgbb.com/1/upload", imageData)
-    //      .then(function (response) {
-    //        finalUpload(response.data.data.display_url);
-    //      })
-    //      .catch(function (error) {
-    //        console.log(error);
-    //      });
+    imageData.append("image", serviceImg);
+    axios
+      .post("https://api.imgbb.com/1/upload", imageData)
+      .then(function (response) {
+        finalUpload(response.data.data.display_url);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   const finalUpload = (image) => {
-    const finalEventData = { ...productData };
-    finalEventData.book_image = image;
-    fetch("https://enigmatic-mesa-35453.herokuapp.com/insertProduct", {
+    const finalEventData = { ...serviceData };
+    finalEventData.image = image;
+    fetch("http://localhost:4000/add-new-service", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,9 +47,11 @@ const AddService = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setConfirmMessage(data.message);
-        hideMessage();
-      });
+        // setConfirmMessage(data.message);
+        // hideMessage();
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
   };
 
   const hideMessage = () => {
@@ -50,71 +60,73 @@ const AddService = () => {
     }, [10000]);
   };
   const handleInputChange = (e) => {
-    const newEvent = { ...productData };
+    const newEvent = { ...serviceData };
     newEvent[e.target.name] = e.target.value;
-    setProductData(newEvent);
+    setServiceData(newEvent);
   };
+  console.log(serviceData);
   return (
-    <div class="d-flex">
+    <div className="d-flex">
       <LeftSidebar />
       <div
-        class="p-4"
+        className="p-4"
         style={{ background: "aliceblue", width: "-webkit-fill-available" }}
       >
         <form className="row g-3" onSubmit={handleSubmit}>
           <div className="col-md-6">
-            <label htmlFor="bookName" className="form-label">
+            <label htmlFor="serviceTitle" className="form-label">
               <i className="bi bi-book-fill"></i> Service title
             </label>
             <input
-              name="book_name"
+              name="title"
               type="text"
               className="form-control"
-              id="bookName"
+              id="serviceTitle"
               required
               onBlur={(e) => handleInputChange(e)}
             />
           </div>
           <div className="col-md-6">
-            <label htmlFor="authorName" className="form-label">
-              <i className="bi bi-pen-fill"></i> Author Name
+            <label htmlFor="serviceCategory" className="form-label">
+              <i className="bi bi-pen-fill"></i> Add a category
             </label>
             <input
-              name="author_name"
+              name="categoryName"
               type="text"
               className="form-control"
-              id="authorName"
+              id="serviceCategory"
               required
+              placeholder="ex: Card access and keypad locking service"
               onBlur={(e) => handleInputChange(e)}
             />
           </div>
           <div className="col-md-6">
-            <label htmlFor="bookPrice" className="form-label">
+            <label htmlFor="servicePrice" className="form-label">
               <i className="bi bi-tags-fill"></i> Service price
             </label>
             <input
-              name="book_price"
+              name="price"
               type="number"
               min={1}
               className="form-control"
-              id="bookPrice"
+              id="servicePrice"
               required
               onBlur={(e) => handleInputChange(e)}
             />
           </div>
           <div className="col-md-6">
             <div className="mb-3">
-              <label htmlFor="bookFile" className="form-label">
+              <label htmlFor="serviceImage" className="form-label">
                 <i className="bi bi-cloud-arrow-up-fill"></i> Upload image
               </label>
 
               <input
                 className="form-control"
                 type="file"
-                id="bookFile"
+                id="serviceImage"
                 required
                 onChange={(e) => {
-                  setProductImage(e.target.files[0]);
+                  setServiceImage(e.target.files[0]);
                 }}
               />
             </div>
@@ -122,7 +134,7 @@ const AddService = () => {
           <div className="col-12 p-3">
             <div className="form-floating">
               <textarea
-                name="book_description"
+                name="description"
                 className="form-control"
                 placeholder="Leave a comment here"
                 id="floatingTextarea2"

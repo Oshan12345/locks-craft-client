@@ -1,0 +1,49 @@
+
+.home-page-banner{
+  background:linear-gradient(to bottom, #310dfd70,white ),url('../../images/bg2.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+   background-attachment: fixed;
+}
+.home-page-banner-card-body{
+    background:linear-gradient(to left, #0a228a71 0%, #1136664f 100%);
+    padding:10px;
+    color:white
+}
+
+.home-page-banner-card-body h2 {
+ /* text-transform: uppercase;
+	background: linear-gradient(to right, #ff3c00 0%, #ff8800 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+    font-weight: bold;
+	font-family: Roboto;
+    padding:10px */
+     text-transform: uppercase;
+    color: white;
+background:linear-gradient(to right, #31395c 0%, #1737c5 100%);
+border: 1px solid #1D9AF2;
+border-radius: 4px;
+padding: 10px 20px;
+text-align: center;
+height:50px;
+font-style: italic;
+transition: all 0.2s ease-in-out;
+}
+.banner-button{
+     text-transform: uppercase;
+    color: white;
+background:linear-gradient(to right, #31395c 0%, #314291 100%);
+border: 1px solid #1D9AF2;
+border-radius: 4px;
+padding: 5px 20px;
+cursor: pointer;
+height:40px;
+font-size:18px;
+transition: all 0.2s ease-in-out;
+}
+.banner-button:hover{
+    box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
+transform: translateX(-3px);
+}

@@ -3,20 +3,20 @@ import LeftSidebar from "../LeftSidebar";
 
 const MakeAdmin = () => {
   return (
-    <div class="d-flex">
+    <div className="d-flex">
       <LeftSidebar />
       <div
-        class="p-4"
+        className="p-4"
         style={{ background: "aliceblue", width: "-webkit-fill-available" }}
       >
-        <form class="d-flex">
+        <form className="d-flex">
           <input
-            class="form-control-sm me-2"
+            className="form-control-sm me-2"
             type="email"
             placeholder="Search"
             aria-label="Email"
           />
-          <button class="btn btn-outline-success" type="submit">
+          <button className="btn btn-outline-success" type="submit">
             Make admin
           </button>
         </form>

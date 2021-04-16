@@ -4,30 +4,31 @@ import LeftSidebar from "../LeftSidebar";
 
 const ManageService = () => {
   return (
-    <div class="d-flex">
+    <div className="d-flex">
       <LeftSidebar />
       <div
-        class="p-4"
+        className="p-4"
         style={{ background: "aliceblue", width: "-webkit-fill-available" }}
       >
-        <div class="table-responsive">
-          <table class="table table-info table-striped table-hover">
-            <thead class="table-dark">
+        <div className="table-responsive">
+          <table className="table table-info table-striped table-hover">
+            <thead className="table-dark">
               <tr>
                 <th scope="col">
-                  <i class="bi bi-file-earmark-person-fill"></i> Service name
+                  <i className="bi bi-file-earmark-person-fill"></i> Service
+                  name
                 </th>
                 <th scope="col">
-                  <i class="bi bi-envelope-fill"></i> price
+                  <i className="bi bi-envelope-fill"></i> price
                 </th>
                 <th scope="col">
-                  <i class="bi bi-envelope-fill"></i> Pending status
+                  <i className="bi bi-envelope-fill"></i> Pending status
                 </th>
                 <th scope="col">
-                  <i class="bi bi-credit-card-2-front-fill"></i> Pay With
+                  <i className="bi bi-credit-card-2-front-fill"></i> Pay With
                 </th>
                 <th scope="col">
-                  <i class="bi bi-layers-half"></i> Action
+                  <i className="bi bi-layers-half"></i> Action
                 </th>
               </tr>
             </thead>
@@ -37,13 +38,13 @@ const ManageService = () => {
                 <td>Mark</td>
                 <td>Otto</td>
                 <td>@mdo</td>
-                <td class="d-flex">
+                <td className="d-flex">
                   <div>
-                    <i class="bi bi-trash-fill mx-2 text-danger"></i>
+                    <i className="bi bi-trash-fill mx-2 text-danger"></i>
                   </div>
                   <div>
                     <Link to="/dashboard/edit-service">
-                      <i class="bi bi-pen-fill text-warning"></i>
+                      <i className="bi bi-pen-fill text-warning"></i>
                     </Link>{" "}
                   </div>
                 </td>
