@@ -34,7 +34,9 @@ background-size: 37%;
   height: auto;
   padding:10px;
   margin:10px;
-width: 50%;
+max-width: 160px;
+max-height: 160px;
+object-fit: cover;
 background: rgba(0, 0, 0, 0.8);
 border-radius: 50%;
 border: 1px solid #1D9AF2;
@@ -43,7 +45,7 @@ animation: spinner4 1000ms linear infinite;
 }
 @keyframes spinner4 {
 to {
-transform: scale(1.2);
-opacity: 0;
+transform: scale(1.1);
+opacity: .3;
 }
 }

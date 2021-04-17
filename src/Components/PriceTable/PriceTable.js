@@ -5,6 +5,9 @@ const PriceTable = ({ selectCategory, service }) => {
   const { category, title } = service;
   return (
     <div className="table-responsive">
+      <h6>
+        You can select a service from the chart just by clicking on a category.
+      </h6>
       <table className="table table-primary table-striped table-hover">
         <thead>
           <tr>

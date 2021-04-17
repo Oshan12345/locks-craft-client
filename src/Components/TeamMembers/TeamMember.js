@@ -13,6 +13,10 @@ const MemberCard = () => {
     borderRadius: "50%",
     background: "white",
     padding: "3%",
+    height: "100px",
+    width: "100px",
+    objectFit: "cover",
+    margin: "auto",
   };
   return (
     <div className="row row-cols-1 row-cols-sm-3  row-cols-md-4 g-4">

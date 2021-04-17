@@ -9,9 +9,11 @@ const GiveReview = () => {
     email: user.email,
     photo: user.photo,
     commentText: "",
+    ratings: 0,
   });
 
   const submitComment = (e) => {
+    console.log(commentDetails);
     e.preventDefault();
     axios
       .post("http://localhost:4000/post-review", commentDetails)
@@ -25,7 +27,7 @@ const GiveReview = () => {
 
   const handleInputChange = (e) => {
     const setText = { ...commentDetails };
-    setText[e.target.name] = [e.target.value];
+    setText[e.target.name] = e.target.value;
     setCommentDetails(setText);
   };
 
@@ -49,6 +51,7 @@ const GiveReview = () => {
               name="email"
               onBlur={handleInputChange}
               placeholder={user.email}
+              required
             />
             <div id="emailHelp" className="form-text">
               We'll never share your email with anyone else.
@@ -66,12 +69,13 @@ const GiveReview = () => {
               name="name"
               onBlur={handleInputChange}
               placeholder={user.name}
+              required
             />
           </div>
 
           <div className="mb-3">
             <label htmlFor="exampleFormControlTextarea1" className="form-label">
-              Example textarea
+              Review text
             </label>
             <textarea
               className="form-control"
@@ -81,6 +85,22 @@ const GiveReview = () => {
               onBlur={handleInputChange}
               required
             ></textarea>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="ratings" className="form-label">
+              Rate us between 1-5
+            </label>
+            <input
+              type="number"
+              className="form-control"
+              id="ratings"
+              aria-describedby="emailHelp"
+              name="ratings"
+              onBlur={handleInputChange}
+              min="1"
+              max="5"
+              required
+            />
           </div>
 
           <input type="submit" className="btn btn-primary" />

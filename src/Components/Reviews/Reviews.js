@@ -23,26 +23,43 @@ const Reviews = () => {
     <div className="w-100 bg-info" style={{ overflowX: "scroll" }}>
       <div className="d-flex justify-content-between ">
         {allReviews.map((review) => (
-          <ReviewCard review={review} />
+          <ReviewCard review={review} key={review?._id} />
         ))}
       </div>
-      <ReviewCard />
     </div>
   );
 };
 
 const ReviewCard = ({ review }) => {
+  console.log(review);
+  const { commentText, name, photo, ratings } = review;
   return (
     // <div className="row row-cols-1 row-cols-md-4 g-4">
 
     <div className="col  m-2">
-      <div className="card h-100">
-        <div className="card-body" style={{ minWidth: 300 }}>
-          <h5 className="card-title">{review?.name}</h5>
-          <p className="card-text">
-            This is a longer card with supporting text below as a natural
-            lead-in to additional content. This content is a little bit longer.
-          </p>
+      <div className="card mb-3" style={{ maxWidth: "540px" }}>
+        <div className="row g-0">
+          <div className="col-md-4 d-flex justify-content-center align-items-center">
+            <img src={photo} className="rounded-circle" alt="..." />
+          </div>
+          <div className="col-md-8">
+            <div className="card-body">
+              <h5 className="card-title">{name}</h5>
+              <p className="card-text">{commentText}</p>
+              <p className="card-text">
+                <small className="text-muted">
+                  {Array.from(Array(parseInt(ratings?.[0])).keys()).map(
+                    (rating) => (
+                      <i
+                        className="bi bi-star-fill text-warning"
+                        key={"rating" + rating}
+                      ></i>
+                    )
+                  )}
+                </small>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

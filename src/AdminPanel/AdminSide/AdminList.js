@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import LeftSidebar from "../LeftSidebar";
 import axios from "axios";
-const OrderList = () => {
-  const [allBookings, setAllBookings] = useState([]);
-  const [isReload, setIsReload] = useState(false);
+const AdminList = () => {
+  const [admins, setAdmins] = useState([]);
+  const [updateUi, setUpdateUi] = useState(false);
+  const [confirmMessage, setConfirmMessage] = useState("");
   useEffect(() => {
     axios
-      .get("http://localhost:4000/get-all-bookings")
+      .get("http://localhost:4000/all-admin-list")
       .then(function (response) {
         // handle success
         console.log(response);
-        setAllBookings(response.data);
+        setAdmins(response.data);
       })
       .catch(function (error) {
         // handle error
@@ -19,21 +20,35 @@ const OrderList = () => {
       .then(function () {
         // always executed
       });
-  }, [isReload]);
+  }, [updateUi]);
 
-  const changeOrderStatus = (e, postId) => {
+  const changeAdminRole = (email) => {
+    console.log(email);
+
+    const role = "user";
     axios
-      .patch(`http://localhost:4000/update-order-status/${postId}`, {
-        status: e.target.innerText,
+      .patch("http://localhost:4000/update-role", {
+        email,
+        role,
       })
       .then(function (response) {
-        response.data.modified && setIsReload(!isReload);
+        console.log(response);
+        setUpdateUi(!updateUi);
+        setConfirmMessage(
+          `Admin Role for this Email : [${email}] has been removed...`
+        );
+        hideMessage();
       })
       .catch(function (error) {
         console.log(error);
       });
   };
 
+  const hideMessage = () => {
+    setTimeout(() => {
+      setConfirmMessage("");
+    }, [10000]);
+  };
   return (
     <div className="d-flex">
       <LeftSidebar />
@@ -42,6 +57,11 @@ const OrderList = () => {
         style={{ background: "aliceblue", width: "-webkit-fill-available" }}
       >
         <div className="table-responsive">
+          {confirmMessage && (
+            <div className="col-12">
+              <p className="p-3 bg-info">{confirmMessage}</p>
+            </div>
+          )}
           <table className="table table-info table-striped table-hover">
             <thead className="table-dark">
               <tr>
@@ -51,24 +71,18 @@ const OrderList = () => {
                 <th scope="col">
                   <i className="bi bi-envelope-fill"></i> Email
                 </th>
-                <th scope="col">
-                  <i className="bi bi-envelope-fill"></i> Service
-                </th>
-                <th scope="col">
-                  <i className="bi bi-credit-card-2-front-fill"></i> Category
-                </th>
+
                 <th scope="col">
                   <i className="bi bi-layers-half"></i> Status
                 </th>
               </tr>
             </thead>
             <tbody>
-              {allBookings.map((booking) => (
-                <tr key={booking._id}>
-                  <th scope="row">{booking.name}</th>
-                  <td>{booking.email}</td>
-                  <td>{booking.serviceTitle} </td>
-                  <td>{booking.categoryName}</td>
+              {admins.map((admin) => (
+                <tr key={admin._id}>
+                  <th scope="row">{admin.name}</th>
+                  <td>{admin.email}</td>
+
                   <td>
                     <div className="dropdown">
                       <button
@@ -79,7 +93,7 @@ const OrderList = () => {
                         aria-expanded="false"
                       >
                         {" "}
-                        {booking.status}
+                        {admin.role}
                       </button>
                       <ul
                         className="dropdown-menu "
@@ -88,23 +102,9 @@ const OrderList = () => {
                         <li
                           className="mx-1 border-bottom"
                           style={{ cursor: "pointer" }}
-                          onClick={(e) => changeOrderStatus(e, booking._id)}
+                          onClick={(e) => changeAdminRole(admin.email)}
                         >
-                          Pending
-                        </li>
-                        <li
-                          className="mx-1 border-bottom"
-                          style={{ cursor: "pointer" }}
-                          onClick={(e) => changeOrderStatus(e, booking._id)}
-                        >
-                          Ongoing
-                        </li>
-                        <li
-                          className="mx-1 border-bottom"
-                          style={{ cursor: "pointer" }}
-                          onClick={(e) => changeOrderStatus(e, booking._id)}
-                        >
-                          Done
+                          Remove Admin Role
                         </li>
                       </ul>
                     </div>
@@ -119,4 +119,4 @@ const OrderList = () => {
   );
 };
 
-export default OrderList;
+export default AdminList;

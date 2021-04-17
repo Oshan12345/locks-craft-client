@@ -156,13 +156,16 @@ const BookService = () => {
                   className="form-control"
                   id="exampleInputServiceType"
                   aria-describedby="emailHelp"
-                  placeholder={service?.title}
+                  placeholder={
+                    service?.title ||
+                    "Please go to home page to select a service"
+                  }
                   disabled
                 />
               </div>
               <div>
                 <select
-                  class="form-select"
+                  className="form-select"
                   aria-label="Default select example"
                   value={orderDetails?.categoryName}
                   name="categoryName"
@@ -171,10 +174,6 @@ const BookService = () => {
                     //  handleInputChange(e);
                   }}
                 >
-                  {" "}
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
                   {service?.category?.map((category, index) => (
                     <option
                       value={category?.categoryName}
@@ -194,14 +193,33 @@ const BookService = () => {
               >
                 price : $ <span>{orderDetails?.price}</span>
               </div>
-              <input type="submit" className="btn btn-primary" />
+              {serviceId && orderDetails.price ? (
+                <input type="submit" className="btn btn-primary" />
+              ) : (
+                <input type="submit" className="btn btn-primary" disabled />
+              )}
             </form>
           </div>
           <div className="m-3">
-            <PriceTable
-              selectCategory={selectCategoryFromTable}
-              service={service}
-            />
+            {serviceId ? (
+              <PriceTable
+                selectCategory={selectCategoryFromTable}
+                service={service}
+              />
+            ) : (
+              <div
+                class="card text-white bg-danger mb-3"
+                style={{ maxWidth: "18rem" }}
+              >
+                <div class="card-header">No service selected</div>
+                <div class="card-body">
+                  <p class="card-text">
+                    You need to select a service from the home page of service
+                    page... please go to any of the page and select a service
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
         "pay with... here stripee will be integrated"

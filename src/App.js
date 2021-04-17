@@ -14,6 +14,7 @@ import MakeAdmin from "./AdminPanel/AdminSide/MakeAdmin";
 import ManageService from "./AdminPanel/AdminSide/ManageService";
 import OrderList from "./AdminPanel/AdminSide/OrderList";
 import EditService from "./AdminPanel/AdminSide/EditService";
+import AdminList from "./AdminPanel/AdminSide/AdminList";
 export const UserContext = createContext();
 function App() {
   const [user, setUser] = useState({});
@@ -73,6 +74,9 @@ function App() {
           </Route>{" "}
           <Route path="/dashboard/edit-service">
             <EditService />
+          </Route>
+          <Route path="/dashboard/admin-list">
+            <AdminList />
           </Route>
         </Switch>
       </Router>

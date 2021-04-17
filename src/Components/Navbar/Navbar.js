@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../App";
 
 const Navbar = () => {
+  const { user } = useContext(UserContext);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container-fluid ">
@@ -50,11 +52,24 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div>
-          <button className="btn btn-warning">Logout</button>
-          <Link to="/login" className="text-dark">
-            <p>Login</p>
-          </Link>
+        <div className="d-flex justify-content-center align-items-center">
+          {user.name || user.email ? (
+            <button className="btn btn-warning">Logout</button>
+          ) : (
+            <Link to="/login" className="text-dark btn btn-primary">
+              Login
+            </Link>
+          )}
+
+          <div>
+            <img
+              src={user.photo}
+              className="rounded-circle mx-2"
+              alt=""
+              style={{ height: 30, width: 30 }}
+            />
+            {user.name}
+          </div>
         </div>
       </div>
     </nav>
