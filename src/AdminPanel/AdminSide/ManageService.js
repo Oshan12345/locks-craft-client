@@ -96,8 +96,8 @@ const ManageService = () => {
                             key={"category" + i}
                             // onClick={(e) => changeOrderStatus(e, booking._id)}
                           >
-                            Name: {category.categoryName} <br />
-                            price: $ {category.price}
+                            <b> Name:</b> {category.categoryName} <br />
+                            <b> price:</b> $ {category.price}
                           </li>
                         ))}
                       </ol>

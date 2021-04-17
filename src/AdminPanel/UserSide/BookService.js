@@ -5,6 +5,8 @@ import PriceTable from "../../Components/PriceTable/PriceTable";
 import { useLocation } from "react-router";
 import axios from "axios";
 import { UserContext } from "../../App";
+import ProcessPayment from "../../Components/ProcessPayment/ProcessPayment";
+import PaymentModal from "../../Components/ProcessPayment/PaymentModal";
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
@@ -23,22 +25,38 @@ const BookService = () => {
   const [orderDetails, setOrderDetails] = useState({
     name: user.name,
     email: user.email,
-    userId: "abcdsdsd",
+
     serviceTitle: "",
     categoryName: "",
     price: "",
     date: `${new Date().toDateString(
       "dd/mm"
     )} , ${new Date().toLocaleTimeString()}`,
+    address: "",
+    mobileNumber: "",
   });
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
+  function openModal(e) {
+    e.preventDefault();
+    orderDetails.address && orderDetails.mobileNumber && setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
   useEffect(() => {
     axios
       .get(`http://localhost:4000/getService/${serviceId}`)
       .then(function (response) {
         // handle success
         setService(response.data);
-        setOrderDetails({ ...orderDetails, serviceTitle: response.data.title });
+        setOrderDetails({
+          ...orderDetails,
+          serviceTitle: response.data.title,
+          categoryName: response.data.category[0].categoryName,
+          price: response.data.category[0].price,
+        });
       })
       .catch(function (error) {
         // handle error
@@ -58,11 +76,12 @@ const BookService = () => {
     newCategory.categoryName = serviceCategory[0].trim();
     newCategory.price = serviceCategory[1];
     // setCategory(newCategory);
-    setOrderDetails({
-      ...orderDetails,
-      categoryName: newCategory.categoryName,
-      price: newCategory.price,
-    });
+    // setOrderDetails({
+    //   ...orderDetails,
+    //   categoryName: newCategory.categoryName,
+    //   price: newCategory.price,
+    // });
+    setOrderDetails(newCategory);
     console.log(orderDetails);
   };
   const handleSelectCategoryFromInput = (e) => {
@@ -78,25 +97,25 @@ const BookService = () => {
     });
   };
 
-  const submitOrder = (e) => {
-    e.preventDefault();
-    console.log(orderDetails);
-    axios
-      .post("http://localhost:4000/book-service", orderDetails)
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+  // const submitOrder = (e) => {
+  //   e.preventDefault();
+  //   console.log(orderDetails);
+  //   axios
+  //     .post("http://localhost:4000/book-service", orderDetails)
+  //     .then(function (response) {
+  //       console.log(response);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // };
 
   const handleInputChange = (e) => {
     const newOrderDetails = { ...orderDetails };
     newOrderDetails[e.target.name] = e.target.value;
     setOrderDetails(newOrderDetails);
   };
-
+  console.log(orderDetails);
   return (
     <div className="d-flex">
       <LeftSidebar />
@@ -106,7 +125,8 @@ const BookService = () => {
       >
         <div className="d-flex flex-column flex-md-row justify-content-start">
           <div className="m-3">
-            <form onSubmit={submitOrder}>
+            {/* <form onSubmit={submitOrder}> */}
+            <form>
               <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">
                   Email address
@@ -121,9 +141,6 @@ const BookService = () => {
                   required
                   placeholder={user.email}
                 />
-                <div id="emailHelp" className="form-text">
-                  We'll never share your email with anyone else.
-                </div>
               </div>
               <div className="mb-3">
                 <label htmlFor="exampleInputName" className="form-label">
@@ -140,6 +157,36 @@ const BookService = () => {
                   required
                 />
               </div>
+              {/* new code */}
+              <div className="mb-3">
+                <label htmlFor="inputAddress" className="form-label">
+                  Your Address
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputAddress"
+                  aria-describedby="emailHelp"
+                  name="address"
+                  onBlur={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="inputMobileNumber" className="form-label">
+                  Your Mobile Number
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="inputMobileNumber"
+                  aria-describedby="emailHelp"
+                  name="mobileNumber"
+                  onBlur={handleInputChange}
+                  required
+                />
+              </div>
+              {/* end of new code */}
               <div>
                 {/* calender */}
                 <p>
@@ -194,10 +241,21 @@ const BookService = () => {
                 price : $ <span>{orderDetails?.price}</span>
               </div>
               {serviceId && orderDetails.price ? (
-                <input type="submit" className="btn btn-primary" />
+                <input
+                  type="submit"
+                  className="btn btn-primary"
+                  value="Make payment"
+                  onClick={openModal}
+                />
               ) : (
-                <input type="submit" className="btn btn-primary" disabled />
+                <input
+                  type="submit"
+                  className="btn btn-primary"
+                  value="Make payment"
+                  disabled
+                />
               )}
+              {/* <button onClick={openModal}>Open Modal</button> */}
             </form>
           </div>
           <div className="m-3">
@@ -223,6 +281,11 @@ const BookService = () => {
           </div>
         </div>
         "pay with... here stripee will be integrated"
+        <PaymentModal
+          modalIsOpen={modalIsOpen}
+          closeModal={closeModal}
+          orderDetails={orderDetails}
+        />
       </div>
     </div>
   );

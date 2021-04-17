@@ -7,9 +7,13 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container-fluid ">
-        <a className="navbar-brand text-dark" href="#">
-          Navbar
-        </a>
+        <Link
+          className="navbar-brand text-dark"
+          to="/"
+          style={{ fontFamily: "'Lobster', cursive", fontSize: "xx-large" }}
+        >
+          Lock's Craft
+        </Link>
         <button
           className="navbar-toggler "
           type="button"
@@ -25,10 +29,10 @@ const Navbar = () => {
           className="collapse navbar-collapse justify-content-center"
           id="navbarSupportedContent"
         >
-          <ul className="navbar-nav mb-2 mb-lg-0 ">
+          <ul className="navbar-nav mb-2 mb-lg-0 m-auto">
             <li className="nav-item mx-2 ">
               <Link
-                className="nav-link active text-dark"
+                className="nav-link active text-dark fs-5 fw-bold"
                 aria-current="page"
                 to="/"
               >
@@ -36,39 +40,40 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item mx-2">
-              <a className="nav-link text-dark" href="#">
+              <Link className="nav-link text-dark fs-5 fw-bold" to="#">
                 About
-              </a>
+              </Link>
             </li>
             <li className="nav-item mx-2">
-              <a className="nav-link text-dark" href="#">
+              <Link className="nav-link text-dark fs-5 fw-bold" to="#">
                 blog
-              </a>
+              </Link>
             </li>
             <li className="nav-item mx-2">
-              <Link className="nav-link text-dark" to="/dashboard">
+              <Link className="nav-link text-dark fs-5 fw-bold" to="/dashboard">
                 Admin
               </Link>
             </li>
           </ul>
-        </div>
-        <div className="d-flex justify-content-center align-items-center">
-          {user.name || user.email ? (
-            <button className="btn btn-warning">Logout</button>
-          ) : (
-            <Link to="/login" className="text-dark btn btn-primary">
-              Login
-            </Link>
-          )}
 
-          <div>
-            <img
-              src={user.photo}
-              className="rounded-circle mx-2"
-              alt=""
-              style={{ height: 30, width: 30 }}
-            />
-            {user.name}
+          <div className="d-flex  me-auto align-items-center">
+            {user.name || user.email ? (
+              <button className="btn btn-warning">Logout</button>
+            ) : (
+              <Link to="/login" className="text-dark btn btn-primary">
+                Login
+              </Link>
+            )}
+
+            <div>
+              <img
+                src={user.photo}
+                className="rounded-circle mx-2"
+                alt=""
+                style={{ height: 30, width: 30 }}
+              />
+              {user.name}
+            </div>
           </div>
         </div>
       </div>

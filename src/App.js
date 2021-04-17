@@ -15,6 +15,7 @@ import ManageService from "./AdminPanel/AdminSide/ManageService";
 import OrderList from "./AdminPanel/AdminSide/OrderList";
 import EditService from "./AdminPanel/AdminSide/EditService";
 import AdminList from "./AdminPanel/AdminSide/AdminList";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 export const UserContext = createContext();
 function App() {
   const [user, setUser] = useState({});
@@ -48,36 +49,36 @@ function App() {
           <Route path="/signup">
             <Signin />
           </Route>
-          <Route path="/dashboard/all-bookings">
+          <PrivateRoute path="/dashboard/all-bookings">
             <BookingList />
-          </Route>{" "}
-          <Route path="/dashboard/book-service">
+          </PrivateRoute>{" "}
+          <PrivateRoute path="/dashboard/book-service">
             <BookService />
-          </Route>{" "}
-          <Route exact path="/dashboard">
+          </PrivateRoute>{" "}
+          <PrivateRoute exact path="/dashboard">
             <Dashboard />
-          </Route>{" "}
-          <Route path="/dashboard/give-review">
+          </PrivateRoute>{" "}
+          <PrivateRoute path="/dashboard/give-review">
             <GiveReview />
-          </Route>
-          <Route path="/dashboard/add-service">
+          </PrivateRoute>
+          <PrivateRoute path="/dashboard/add-service">
             <AddService />
-          </Route>
-          <Route path="/dashboard/make-admin">
+          </PrivateRoute>
+          <PrivateRoute path="/dashboard/make-admin">
             <MakeAdmin />
-          </Route>{" "}
-          <Route path="/dashboard/manage-service">
+          </PrivateRoute>{" "}
+          <PrivateRoute path="/dashboard/manage-service">
             <ManageService />
-          </Route>{" "}
-          <Route path="/dashboard/orders-list">
+          </PrivateRoute>{" "}
+          <PrivateRoute path="/dashboard/orders-list">
             <OrderList />
-          </Route>{" "}
-          <Route path="/dashboard/edit-service">
+          </PrivateRoute>{" "}
+          <PrivateRoute path="/dashboard/edit-service">
             <EditService />
-          </Route>
-          <Route path="/dashboard/admin-list">
+          </PrivateRoute>
+          <PrivateRoute path="/dashboard/admin-list">
             <AdminList />
-          </Route>
+          </PrivateRoute>
         </Switch>
       </Router>
     </UserContext.Provider>
