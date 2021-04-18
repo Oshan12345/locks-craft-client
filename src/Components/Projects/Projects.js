@@ -56,7 +56,7 @@ const Projects = () => {
   ];
 
   return (
-    <div className="row row-cols-2 row-cols-md-3 g-4">
+    <div className="row row-cols-1 row-cols-sm-3 row-cols-md-3 g-4">
       {projectData.map((project) => (
         <ProjectsCard project={project} key={project.id} />
       ))}

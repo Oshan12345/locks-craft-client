@@ -180,7 +180,7 @@ const BookService = () => {
               <div>
                 {/* calender */}
                 <p>
-                  Order Time: {new Date().toDateString("dd/mm")},
+                  <b> Order Time:</b> {new Date().toDateString("dd/mm")},
                   {new Date().toLocaleTimeString()}{" "}
                 </p>
               </div>
@@ -201,6 +201,7 @@ const BookService = () => {
                 />
               </div>
               <div>
+                <p>Please select a service category</p>
                 <select
                   className="form-select"
                   aria-label="Default select example"
@@ -208,7 +209,6 @@ const BookService = () => {
                   name="categoryName"
                   onChange={(e) => {
                     handleSelectCategoryFromInput(e);
-                    //  handleInputChange(e);
                   }}
                 >
                   {service?.category?.map((category, index) => (
@@ -273,7 +273,7 @@ const BookService = () => {
             )}
           </div>
         </div>
-        "pay with... here stripee will be integrated"
+
         <PaymentModal
           modalIsOpen={modalIsOpen}
           closeModal={closeModal}
