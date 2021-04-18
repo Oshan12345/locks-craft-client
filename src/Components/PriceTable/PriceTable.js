@@ -1,7 +1,6 @@
 import React from "react";
 
 const PriceTable = ({ selectCategory, service }) => {
-  //console.log(service);
   const { category, title } = service;
   return (
     <div className="table-responsive">

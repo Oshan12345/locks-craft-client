@@ -10,13 +10,6 @@ const ServiceCard = ({ service }) => {
         className="text-decoration-none text-dark"
       >
         <div className="card h-100 service-card-body">
-          {/* <div style={{ overflow: "hidden" }}>
-            <img
-              src={image}
-              className="card-img-top w-100 service-icon"
-              alt="..."
-            />
-          </div> */}
           <div className="h-50 d-flex justify-content-center align-items-center mt-5">
             <img src={image} alt="" className=" service-icon" srcSet="" />
           </div>

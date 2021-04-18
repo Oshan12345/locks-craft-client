@@ -7,14 +7,11 @@ const AdminList = () => {
   const [confirmMessage, setConfirmMessage] = useState("");
   useEffect(() => {
     axios
-      .get("http://localhost:4000/all-admin-list")
+      .get("https://peaceful-fjord-47606.herokuapp.com/all-admin-list")
       .then(function (response) {
-        // handle success
-        console.log(response);
         setAdmins(response.data);
       })
       .catch(function (error) {
-        // handle error
         console.log(error);
       })
       .then(function () {
@@ -22,17 +19,13 @@ const AdminList = () => {
       });
   }, [updateUi]);
 
-  const changeAdminRole = (email) => {
-    console.log(email);
-
-    const role = "user";
+  const changeAdminRole = (email, adminId) => {
+    //const role = "user";
     axios
-      .patch("http://localhost:4000/update-role", {
-        email,
-        role,
-      })
+      .delete(
+        `https://peaceful-fjord-47606.herokuapp.com/delete-admin-role/${adminId}`
+      )
       .then(function (response) {
-        console.log(response);
         setUpdateUi(!updateUi);
         setConfirmMessage(
           `Admin Role for this Email : [${email}] has been removed...`
@@ -83,10 +76,10 @@ const AdminList = () => {
                   <th scope="row">{admin.name}</th>
                   <td>{admin.email}</td>
 
-                  <td>
+                  <td className="p-5">
                     <div className="dropdown">
                       <button
-                        className="btn btn-primary dropdown-toggle"
+                        className="btn btn-primary dropdown-toggle p-2 fs-5"
                         type="button"
                         id="dropdownMenuButton1"
                         data-bs-toggle="dropdown"
@@ -102,7 +95,9 @@ const AdminList = () => {
                         <li
                           className="mx-1 border-bottom"
                           style={{ cursor: "pointer" }}
-                          onClick={(e) => changeAdminRole(admin.email)}
+                          onClick={(e) =>
+                            changeAdminRole(admin.email, admin._id)
+                          }
                         >
                           Remove Admin Role
                         </li>

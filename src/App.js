@@ -1,7 +1,7 @@
 import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Pages/Home";
 import firebase from "firebase/app";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./Components/Login/Login";
 import Signin from "./Components/Login/Signin";
 import { createContext, useEffect, useState } from "react";
@@ -16,6 +16,9 @@ import OrderList from "./AdminPanel/AdminSide/OrderList";
 import EditService from "./AdminPanel/AdminSide/EditService";
 import AdminList from "./AdminPanel/AdminSide/AdminList";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import AboutUs from "./Pages/AboutUs";
+import Blog from "./Pages/Blog";
+import BlogPage from "./Components/BlogComponent/BlogPage";
 export const UserContext = createContext();
 function App() {
   const [user, setUser] = useState({});
@@ -42,6 +45,15 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route path="/about">
+            <AboutUs />
+          </Route>
+          <Route exact path="/blog">
+            <Blog />
+          </Route>
+          <Route path="/blog/:postId">
+            <BlogPage />
           </Route>
           <Route path="/login">
             <Login />

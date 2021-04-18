@@ -2,81 +2,74 @@ import React from "react";
 
 const ContactUsForm = () => {
   return (
-    <div className="bg-light p-4">
-      <form className="row g-3">
-        <div className="col-md-6">
-          <label htmlFor="inputEmail4" className="form-label">
-            Email
-          </label>
-          <input type="email" className="form-control" id="inputEmail4" />
-        </div>
-        <div className="col-md-6">
-          <label htmlFor="inputPassword4" className="form-label">
-            Password
-          </label>
-          <input type="password" className="form-control" id="inputPassword4" />
-        </div>
-        <div className="col-12">
-          <label htmlFor="inputAddress" className="form-label">
-            Address
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="inputAddress"
-            placeholder="1234 Main St"
-          />
-        </div>
-        <div className="col-12">
-          <label htmlFor="inputAddress2" className="form-label">
-            Address 2
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="inputAddress2"
-            placeholder="Apartment, studio, or floor"
-          />
-        </div>
-        <div className="col-md-6">
-          <label htmlFor="inputCity" className="form-label">
-            City
-          </label>
-          <input type="text" className="form-control" id="inputCity" />
-        </div>
-        <div className="col-md-4">
-          <label htmlFor="inputState" className="form-label">
-            State
-          </label>
-          <select id="inputState" className="form-select">
-            <option>Choose...</option>
-            <option>...</option>
-          </select>
-        </div>
-        <div className="col-md-2">
-          <label htmlFor="inputZip" className="form-label">
-            Zip
-          </label>
-          <input type="text" className="form-control" id="inputZip" />
-        </div>
-        <div className="col-12">
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="gridCheck"
-            />
-            <label className="form-check-label" htmlFor="gridCheck">
-              Check me out
-            </label>
+    <div className="bg-light p-4 mb-4">
+      <div className="card mb-3 justify-content-center align-items-center">
+        <div className="row g-0">
+          <div className="col-sm-6 m-auto">
+            <div className="card-body">
+              <h5 className="card-title">
+                How Do Locksmiths Make Keys Without an Original Key - How to
+                Impression a Key
+              </h5>
+              <p className="card-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Expedita libero laborum quo sequi quisquam aliquid rerum,
+                ducimus eligendi ipsam dicta, natus architecto. Nihil amet saepe
+                tempore vel ex. Voluptatem, deserunt?
+              </p>
+            </div>
+          </div>
+          <div className="col-sm-6 m-auto " style={{ width: "auto" }}>
+            <iframe
+              width="-webkit-fill-available"
+              height="315"
+              src="https://www.youtube.com/embed/1uZjyWVcglI"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
-        <div className="col-12">
-          <button type="submit" className="btn btn-primary">
-            Sign in
-          </button>
-        </div>
-      </form>
+      </div>
+
+      <div className="bg-info p-5 rounded">
+        <h3 className="text-center m-3">Sign Up for newsletter</h3>
+        <form>
+          <div className="row mb-3">
+            <label
+              htmlFor="inputName"
+              className="col-sm-2 col-form-label col-form-label-sm fs-4"
+            >
+              Name
+            </label>
+            <div className="col-sm-10">
+              <input
+                type="name"
+                className="form-control form-control-sm fs-4"
+                id="inputName"
+                placeholder="enter your name"
+              />
+            </div>
+          </div>
+          <div className="row mb-3">
+            <label
+              htmlFor="colFormLabelSm"
+              className="col-sm-2 col-form-label col-form-label-sm fs-4"
+            >
+              Email
+            </label>
+            <div className="col-sm-10">
+              <input
+                type="email"
+                className="form-control form-control-sm fs-4"
+                id="colFormLabelSm"
+                placeholder="enter your email"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

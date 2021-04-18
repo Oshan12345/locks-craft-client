@@ -11,15 +11,7 @@ const AddService = () => {
     image: " ",
   });
   const [confirmMessage, setConfirmMessage] = useState("");
-  //  title
-  //         category: [
-  //           {
-  //             categoryName: "name",
-  //             price: 23,
-  //           },
-  //         ],
-  //         image
-  //         description
+
   const handleSubmit = (e) => {
     e.preventDefault();
     var imageData = new FormData();
@@ -38,7 +30,7 @@ const AddService = () => {
   const finalUpload = (image) => {
     const finalEventData = { ...serviceData };
     finalEventData.image = image;
-    fetch("http://localhost:4000/add-new-service", {
+    fetch("https://peaceful-fjord-47606.herokuapp.com/add-new-service", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,9 +39,8 @@ const AddService = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // setConfirmMessage(data.message);
-        // hideMessage();
-        console.log(data);
+        setConfirmMessage("A new service has been added to the db");
+        hideMessage();
       })
       .catch((err) => console.log(err));
   };
@@ -64,7 +55,7 @@ const AddService = () => {
     newEvent[e.target.name] = e.target.value;
     setServiceData(newEvent);
   };
-  console.log(serviceData);
+
   return (
     <div className="d-flex">
       <LeftSidebar />
@@ -80,7 +71,7 @@ const AddService = () => {
             <input
               name="title"
               type="text"
-              className="form-control"
+              className="form-control fs-5"
               id="serviceTitle"
               required
               onBlur={(e) => handleInputChange(e)}
@@ -93,7 +84,7 @@ const AddService = () => {
             <input
               name="categoryName"
               type="text"
-              className="form-control"
+              className="form-control fs-5"
               id="serviceCategory"
               required
               placeholder="ex: Card access and keypad locking service"
@@ -102,13 +93,13 @@ const AddService = () => {
           </div>
           <div className="col-md-6">
             <label htmlFor="servicePrice" className="form-label">
-              <i className="bi bi-tags-fill"></i> Service price
+              <i className="bi bi-tags-fill"></i> Service Category price
             </label>
             <input
               name="price"
               type="number"
               min={1}
-              className="form-control"
+              className="form-control fs-5"
               id="servicePrice"
               required
               onBlur={(e) => handleInputChange(e)}
@@ -121,7 +112,7 @@ const AddService = () => {
               </label>
 
               <input
-                className="form-control"
+                className="form-control fs-5"
                 type="file"
                 id="serviceImage"
                 required

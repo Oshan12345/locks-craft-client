@@ -7,12 +7,9 @@ const LeftSidebar = () => {
   const [displayAdminTabs, setDisplayAdminTabs] = useState(false);
 
   useEffect(() => {
-    console.log(user);
-    console.log(`http://localhost:4000/is-admin/${user.email}`);
     axios
-      .get(`http://localhost:4000/is-admin/${user.email}`)
+      .get(`https://peaceful-fjord-47606.herokuapp.com/is-admin/${user.email}`)
       .then(function (response) {
-        console.log(response);
         setDisplayAdminTabs(response.data.isAdmin);
       })
       .catch(function (error) {
@@ -22,35 +19,9 @@ const LeftSidebar = () => {
 
   return (
     <div style={{ width: "fit-content" }} className="bg-info p-3">
-      <div className="sidebar-item">
-        <Link
-          to="/dashboard/book-service"
-          className="text-decoration-none text-dark"
-        >
-          <i className="bi bi-cart-plus-fill"></i> book
-        </Link>
-      </div>
-      <hr />
-      <div className="sidebar-item">
-        <Link
-          to="/dashboard/all-bookings"
-          className="text-decoration-none text-dark"
-        >
-          <i className="bi bi-basket-fill"></i> Bookings
-        </Link>
-      </div>
-      <hr />
-      <div className="sidebar-item">
-        <Link
-          to="/dashboard/give-review"
-          className="text-decoration-none text-dark"
-        >
-          <i className="bi bi-chat-left-text-fill"></i> Review
-        </Link>
-      </div>
       <hr />
       {/* admin */}
-      {displayAdminTabs && (
+      {displayAdminTabs ? (
         <div>
           <div className="sidebar-item">
             <Link
@@ -94,6 +65,35 @@ const LeftSidebar = () => {
               className="text-decoration-none text-dark"
             >
               <i className="bi bi-person-lines-fill"></i> Admin list
+            </Link>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <div className="sidebar-item">
+            <Link
+              to="/dashboard/book-service"
+              className="text-decoration-none text-dark"
+            >
+              <i className="bi bi-cart-plus-fill"></i> book
+            </Link>
+          </div>
+          <hr />
+          <div className="sidebar-item">
+            <Link
+              to="/dashboard/all-bookings"
+              className="text-decoration-none text-dark"
+            >
+              <i className="bi bi-basket-fill"></i> Bookings
+            </Link>
+          </div>
+          <hr />
+          <div className="sidebar-item">
+            <Link
+              to="/dashboard/give-review"
+              className="text-decoration-none text-dark"
+            >
+              <i className="bi bi-chat-left-text-fill"></i> Review
             </Link>
           </div>
         </div>

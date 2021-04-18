@@ -29,7 +29,7 @@ const PaymentModal = ({ modalIsOpen, closeModal, orderDetails }) => {
         contentLabel="Example Modal"
       >
         <div onClick={closeModal} style={{ width: 30, marginLeft: "auto" }}>
-          <i class="bi bi-x-circle p-3 m-2 text-danger"></i>
+          <i className="bi bi-x-circle p-3 m-2 text-danger"></i>
         </div>
 
         <ProcessPayment orderDetails={orderDetails} />

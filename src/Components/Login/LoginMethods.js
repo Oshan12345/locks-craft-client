@@ -26,7 +26,6 @@ export const googleSignIn = () => {
     })
     .catch((error) => {
       const errorMessage = error.message;
-
       return errorMessage;
     });
 };

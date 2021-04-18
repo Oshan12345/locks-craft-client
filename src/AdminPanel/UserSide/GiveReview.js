@@ -11,20 +11,29 @@ const GiveReview = () => {
     commentText: "",
     ratings: 0,
   });
-
+  const [successMessage, setSuccessMessage] = useState("");
   const submitComment = (e) => {
-    console.log(commentDetails);
     e.preventDefault();
     axios
-      .post("http://localhost:4000/post-review", commentDetails)
+      .post(
+        "https://peaceful-fjord-47606.herokuapp.com/post-review",
+        commentDetails
+      )
       .then(function (response) {
-        console.log(response);
+        setSuccessMessage(
+          "We have received your review . Thank you ver much for your review"
+        );
+        hideMessage();
       })
       .catch(function (error) {
         console.log(error);
       });
   };
-
+  const hideMessage = () => {
+    setTimeout(() => {
+      setSuccessMessage("");
+    }, 10000);
+  };
   const handleInputChange = (e) => {
     const setText = { ...commentDetails };
     setText[e.target.name] = e.target.value;
@@ -38,6 +47,9 @@ const GiveReview = () => {
         className="p-4"
         style={{ background: "aliceblue", width: "-webkit-fill-available" }}
       >
+        {successMessage && (
+          <div className="p-3 bg-success">{successMessage}</div>
+        )}
         <form onSubmit={submitComment}>
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">
@@ -103,7 +115,7 @@ const GiveReview = () => {
             />
           </div>
 
-          <input type="submit" className="btn btn-primary" />
+          <input type="submit" className="btn btn-primary fs-3" />
         </form>
       </div>
     </div>

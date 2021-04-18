@@ -7,14 +7,13 @@ const BookingList = () => {
   const { user } = useContext(UserContext);
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/get-user-bookings/${user.email}`)
+      .get(
+        `https://peaceful-fjord-47606.herokuapp.com/get-user-bookings/${user.email}`
+      )
       .then(function (response) {
-        // handle success
-        console.log(response);
         setListOfBookings(response.data);
       })
       .catch(function (error) {
-        // handle error
         console.log(error);
       })
       .then(function () {

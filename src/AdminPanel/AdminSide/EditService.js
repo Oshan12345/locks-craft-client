@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import axios from "axios";
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 const EditService = () => {
+  let history = useHistory();
   let query = useQuery();
   const serviceId = query.get("serviceId");
   const [serviceDetails, setServiceDetail] = useState({});
   const [updatedDetails, setUpdatedDetails] = useState({});
   const [serviceImage, setServiceImage] = useState("");
+  const [updateUi, setUpdateUi] = useState(false);
+  const [displayMessage, setDisplayMessage] = useState("");
   const [singleCategory, setSingleCategory] = useState({
     categoryName: "",
     price: 0,
@@ -17,37 +20,33 @@ const EditService = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/getService/${serviceId}`)
+      .get(`https://peaceful-fjord-47606.herokuapp.com/getService/${serviceId}`)
       .then(function (response) {
-        // handle success
-        console.log(response);
         setServiceDetail(response.data);
         setUpdatedDetails(response.data);
       })
       .catch(function (error) {
-        // handle error
         console.log(error);
       })
-      .then(function () {
-        // always executed
-      });
-  }, [serviceId]);
+      .then(function () {});
+  }, [serviceId, updateUi]);
 
   const addNewCategory = (e) => {
     e.preventDefault();
+
     axios
       .patch(
-        `http://localhost:4000/add-new-category/${serviceId}`,
+        `https://peaceful-fjord-47606.herokuapp.com/add-new-category/${serviceId}`,
         singleCategory
       )
       .then(function (response) {
-        console.log(response);
+        setUpdateUi(!updateUi);
       })
       .catch(function (error) {
         console.log(error);
       });
   };
-  console.log(serviceImage);
+
   const handleCategoryInput = (e) => {
     const newCategory = { ...singleCategory };
     newCategory[e.target.name] = e.target.value;
@@ -57,7 +56,6 @@ const EditService = () => {
     const newCategory = { ...updatedDetails };
     newCategory[e.target.name] = e.target.value;
     setUpdatedDetails(newCategory);
-    console.log(updatedDetails);
   };
   const deleteCategory = (e) => {
     const serviceCategory = e.target.parentElement.parentElement.children;
@@ -65,12 +63,15 @@ const EditService = () => {
     const price = serviceCategory[1].outerText.split("$")[1];
 
     axios
-      .patch(`http://localhost:4000/delete-category/${serviceId}`, {
-        categoryName,
-        price,
-      })
+      .patch(
+        `https://peaceful-fjord-47606.herokuapp.com/delete-category/${serviceId}`,
+        {
+          categoryName,
+          price,
+        }
+      )
       .then(function (response) {
-        console.log(response);
+        setUpdateUi(!updateUi);
       })
       .catch(function (error) {
         console.log(error);
@@ -88,7 +89,6 @@ const EditService = () => {
         .post("https://api.imgbb.com/1/upload", imageData)
         .then(function (response) {
           finalUpload(response.data.data.display_url);
-          console.log("eqra--------", response);
         })
         .catch(function (error) {
           console.log(error);
@@ -100,36 +100,33 @@ const EditService = () => {
   const finalUpload = (image) => {
     const finalEventData = { ...updatedDetails };
     finalEventData.image = image;
-    console.log("ssssssss--", finalEventData);
+
     axios
       .patch(
-        `http://localhost:4000/update-service/${serviceId}`,
+        `https://peaceful-fjord-47606.herokuapp.com/update-service/${serviceId}`,
         finalEventData
       )
       .then(function (response) {
-        console.log(response);
+        setDisplayMessage("All information updated successfully");
       })
       .catch(function (error) {
         console.log(error);
       });
-    // fetch(
-    //   `https://enigmatic-mesa-35453.herokuapp.com/updateProduct/${productId}`,
-    //   {
-    //     method: "PATCH",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(finalEventData),
-    //   }
-    // )
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //   //  history.push("/admin");
-    //   });
   };
-  console.log("sssss-----------", updatedDetails);
+
   return (
     <div className="container m-auto">
+      {displayMessage && (
+        <div className="bg-success p-4 ">
+          <p>{displayMessage}</p>{" "}
+          <button
+            className="btn btn-info fs-4"
+            onClick={() => history.push("/dashboard/manage-service")}
+          >
+            Go to Manage service page
+          </button>{" "}
+        </div>
+      )}
       <p className="text-center p-3 mt-4">
         Fill each field which you want to change. If yor don't fill any field it
         will be updated with previous information.
@@ -155,7 +152,7 @@ const EditService = () => {
             <input
               name="title"
               type="text"
-              className="form-control"
+              className="form-control fs-4"
               id="serviceTitle"
               placeholder={serviceDetails.title}
               onBlur={(e) => handleInputChange(e)}
@@ -168,7 +165,7 @@ const EditService = () => {
               </label>
 
               <input
-                className="form-control"
+                className="form-control fs-4"
                 type="file"
                 id="bookFile"
                 // onChange={handleImageUpload}
@@ -201,10 +198,10 @@ const EditService = () => {
               <i className="bi bi-pen-fill"></i> Category
             </label>
             <div>
-              <form>
+              <form onSubmit={addNewCategory}>
                 <input
                   type="text"
-                  className="form-control m-2"
+                  className="form-control m-2 fs-4"
                   placeholder="add a new category"
                   required
                   name="categoryName"
@@ -212,7 +209,7 @@ const EditService = () => {
                 />
                 <input
                   type="number"
-                  className="form-control m-2"
+                  className="form-control m-2 fs-4"
                   placeholder="Add a price"
                   min="1"
                   required
@@ -221,14 +218,11 @@ const EditService = () => {
                 />
                 <div className="d-flex justify-content-center m-3">
                   {" "}
-                  <button
-                    className="btn btn-info"
+                  <input
+                    className="btn btn-info fs-4"
                     type="submit"
-                    onClick={addNewCategory}
-                  >
-                    {" "}
-                    Add a category
-                  </button>
+                    // onClick={addNewCategory}
+                  />{" "}
                 </div>
               </form>
             </div>
@@ -264,13 +258,13 @@ const EditService = () => {
       <div className="col-12 d-flex justify-content-between p-4 mb-5">
         <button
           type="submit"
-          className="btn btn-primary"
+          className="btn btn-primary fs-4"
           onClick={handleSubmit}
         >
           Update
         </button>
         <button
-          className="btn btn-primary"
+          className="btn btn-primary fs-4"
           onClick={() => window.history.go(-1)}
         >
           Go back

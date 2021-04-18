@@ -7,10 +7,10 @@ const ManageService = () => {
   const [updateUi, setUpdateUi] = useState(false);
   useEffect(() => {
     axios
-      .get("http://localhost:4000/all-service")
+      .get("https://peaceful-fjord-47606.herokuapp.com/all-service")
       .then(function (response) {
         // handle success
-        console.log(response);
+
         setAllServiceList(response.data);
       })
       .catch(function (error) {
@@ -23,12 +23,11 @@ const ManageService = () => {
   }, [updateUi]);
 
   const deleteOneService = (serviceId) => {
-    console.log(serviceId);
     axios
-      .delete(`http://localhost:4000/delete-service/${serviceId}`)
+      .delete(
+        `https://peaceful-fjord-47606.herokuapp.com/delete-service/${serviceId}`
+      )
       .then(function (response) {
-        // handle success
-        console.log(response);
         setUpdateUi(!updateUi);
       })
       .catch(function (error) {

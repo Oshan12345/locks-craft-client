@@ -11,12 +11,11 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     googleSignIn().then((res) => {
-      console.log(res);
       setUser(res);
       history.replace(from);
       const { name, email } = res;
       axios
-        .post("http://localhost:4000/add-user", {
+        .post("https://peaceful-fjord-47606.herokuapp.com/add-user", {
           name,
           email,
         })

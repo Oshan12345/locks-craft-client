@@ -6,16 +6,16 @@ const MakeAdmin = () => {
   const [adminEmail, setAdminEmail] = useState("");
   const handleMakeAdmin = (e) => {
     e.preventDefault();
-    console.log(adminEmail);
+
     const role = "admin";
+
     axios
-      .patch("http://localhost:4000/update-role", {
+      .post("https://peaceful-fjord-47606.herokuapp.com/make-admin", {
         email: adminEmail,
         role,
       })
       .then(function (response) {
-        console.log(response);
-        setConfirmMessage(response.data);
+        setConfirmMessage(response.data.message);
         hideMessage();
       })
       .catch(function (error) {
@@ -36,7 +36,7 @@ const MakeAdmin = () => {
       >
         <form className="d-flex" onSubmit={handleMakeAdmin}>
           <input
-            className="form-control-sm me-2"
+            className="form-control-sm me-2 fs-4"
             type="email"
             placeholder="Search"
             aria-label="Email"

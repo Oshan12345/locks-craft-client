@@ -16,10 +16,10 @@ const MemberCard = () => {
     height: "100px",
     width: "100px",
     objectFit: "cover",
-    margin: "auto",
+    margin: "8px auto",
   };
   return (
-    <div className="row row-cols-1 row-cols-sm-3  row-cols-md-4 g-4">
+    <div className="row row-cols-1 row-cols-sm-2  row-cols-md-4 g-4">
       <div className="col ">
         <div className="card  bg-warning h-100">
           <img
@@ -29,11 +29,11 @@ const MemberCard = () => {
             style={imageStyle}
           />
           <div className="card-body">
-            <h5 className="card-title">Card title</h5>
+            <h5 className="card-title">Mr. Jhon</h5>
             <p className="card-text">
-              This is a longer card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Repudiandae laboriosam excepturi quasi alias veniam quidem, facere
+              quia ad unde?
             </p>
           </div>
         </div>
@@ -47,24 +47,10 @@ const MemberCard = () => {
             style={imageStyle}
           />
           <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">This is a short card.</p>
-          </div>
-        </div>
-      </div>
-      <div className="col">
-        <div className="card h-100  bg-warning">
-          <img
-            src={stuffImg}
-            className="card-img-top"
-            alt="..."
-            style={imageStyle}
-          />
-          <div className="card-body">
-            <h5 className="card-title">Card title</h5>
+            <h5 className="card-title">Mr. Ricchel </h5>
             <p className="card-text">
-              This is a longer card with supporting text below as a natural
-              lead-in to additional content.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa
+              nesciunt nihil alias, quis voluptatem accusamus iusto architecto.
             </p>
           </div>
         </div>
@@ -78,11 +64,27 @@ const MemberCard = () => {
             style={imageStyle}
           />
           <div className="card-body">
-            <h5 className="card-title">Card title</h5>
+            <h5 className="card-title">Mr. Alex</h5>
             <p className="card-text">
-              This is a longer card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt,
+              sed tempore ipsum quam corrupti at explicabo.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="col">
+        <div className="card h-100  bg-warning ">
+          <img
+            src={stuffImg}
+            className="card-img-top "
+            alt="..."
+            style={imageStyle}
+          />
+          <div className="card-body">
+            <h5 className="card-title">Mr. Jack</h5>
+            <p className="card-text">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe
+              iure commodi quidem fugit, nam iste.
             </p>
           </div>
         </div>

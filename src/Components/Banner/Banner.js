@@ -101,7 +101,7 @@ const Banner = () => {
 
 const CarosalItem = ({ props }) => {
   const { image, text, flexDirection } = props;
-  // style={{ backgroundColor: bgColor }}
+
   return (
     <div className="card mb-3 border-0 bg-transparent">
       <div className={`row g-0 ${flexDirection}`}>

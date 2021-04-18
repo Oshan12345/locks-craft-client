@@ -5,23 +5,19 @@ import PriceTable from "../../Components/PriceTable/PriceTable";
 import { useLocation } from "react-router";
 import axios from "axios";
 import { UserContext } from "../../App";
-import ProcessPayment from "../../Components/ProcessPayment/ProcessPayment";
+
 import PaymentModal from "../../Components/ProcessPayment/PaymentModal";
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 const BookService = () => {
   const { user } = useContext(UserContext);
-  console.log(user);
+
   const [service, setService] = useState({});
 
-  // const [category, setCategory] = useState({
-  //   categoryName: "",
-  //   price: "",
-  // });
   let query = useQuery();
   const serviceId = query.get("serviceId");
-  console.log(serviceId);
+
   const [orderDetails, setOrderDetails] = useState({
     name: user.name,
     email: user.email,
@@ -36,18 +32,34 @@ const BookService = () => {
     mobileNumber: "",
   });
   const [modalIsOpen, setIsOpen] = React.useState(false);
-
+  const [displayMessage, setDisplayMessage] = useState("");
   function openModal(e) {
     e.preventDefault();
+
+    if (
+      !orderDetails.serviceTitle ||
+      !orderDetails.categoryName ||
+      !service.address ||
+      !service.mobileNumber
+    ) {
+      setDisplayMessage("Please fill all the fields...");
+      hideMessage();
+    }
+
     orderDetails.address && orderDetails.mobileNumber && setIsOpen(true);
   }
+  const hideMessage = () => {
+    setTimeout(() => {
+      setDisplayMessage("");
+    }, 5000);
+  };
 
   function closeModal() {
     setIsOpen(false);
   }
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/getService/${serviceId}`)
+      .get(`https://peaceful-fjord-47606.herokuapp.com/getService/${serviceId}`)
       .then(function (response) {
         // handle success
         setService(response.data);
@@ -59,7 +71,6 @@ const BookService = () => {
         });
       })
       .catch(function (error) {
-        // handle error
         console.log(error);
       })
       .then(function () {
@@ -67,22 +78,14 @@ const BookService = () => {
       });
   }, [serviceId]);
 
-  //console.log(category, "sagar");
-
   const selectCategoryFromTable = (e) => {
     const serviceCategory = e.target.parentNode.innerText.split("$");
 
     const newCategory = { ...orderDetails };
     newCategory.categoryName = serviceCategory[0].trim();
     newCategory.price = serviceCategory[1];
-    // setCategory(newCategory);
-    // setOrderDetails({
-    //   ...orderDetails,
-    //   categoryName: newCategory.categoryName,
-    //   price: newCategory.price,
-    // });
+
     setOrderDetails(newCategory);
-    console.log(orderDetails);
   };
   const handleSelectCategoryFromInput = (e) => {
     const newCategory = service?.category?.find(
@@ -97,25 +100,12 @@ const BookService = () => {
     });
   };
 
-  // const submitOrder = (e) => {
-  //   e.preventDefault();
-  //   console.log(orderDetails);
-  //   axios
-  //     .post("http://localhost:4000/book-service", orderDetails)
-  //     .then(function (response) {
-  //       console.log(response);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
-
   const handleInputChange = (e) => {
     const newOrderDetails = { ...orderDetails };
     newOrderDetails[e.target.name] = e.target.value;
     setOrderDetails(newOrderDetails);
   };
-  console.log(orderDetails);
+
   return (
     <div className="d-flex">
       <LeftSidebar />
@@ -240,6 +230,9 @@ const BookService = () => {
               >
                 price : $ <span>{orderDetails?.price}</span>
               </div>
+              {displayMessage && (
+                <div className="bg-danger p-3 text-dark">{displayMessage}</div>
+              )}
               {serviceId && orderDetails.price ? (
                 <input
                   type="submit"
@@ -266,12 +259,12 @@ const BookService = () => {
               />
             ) : (
               <div
-                class="card text-white bg-danger mb-3"
+                className="card text-white bg-danger mb-3"
                 style={{ maxWidth: "18rem" }}
               >
-                <div class="card-header">No service selected</div>
-                <div class="card-body">
-                  <p class="card-text">
+                <div className="card-header">No service selected</div>
+                <div className="card-body">
+                  <p className="card-text">
                     You need to select a service from the home page of service
                     page... please go to any of the page and select a service
                   </p>

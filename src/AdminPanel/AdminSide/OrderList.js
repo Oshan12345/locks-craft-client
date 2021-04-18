@@ -6,10 +6,10 @@ const OrderList = () => {
   const [isReload, setIsReload] = useState(false);
   useEffect(() => {
     axios
-      .get("http://localhost:4000/get-all-bookings")
+      .get("https://peaceful-fjord-47606.herokuapp.com/get-all-bookings")
       .then(function (response) {
         // handle success
-        console.log(response);
+
         setAllBookings(response.data);
       })
       .catch(function (error) {
@@ -23,9 +23,12 @@ const OrderList = () => {
 
   const changeOrderStatus = (e, postId) => {
     axios
-      .patch(`http://localhost:4000/update-order-status/${postId}`, {
-        status: e.target.innerText,
-      })
+      .patch(
+        `https://peaceful-fjord-47606.herokuapp.com/update-order-status/${postId}`,
+        {
+          status: e.target.innerText,
+        }
+      )
       .then(function (response) {
         response.data.modified && setIsReload(!isReload);
       })
@@ -72,7 +75,7 @@ const OrderList = () => {
                   <td>
                     <div className="dropdown">
                       <button
-                        className="btn btn-primary dropdown-toggle"
+                        className="btn btn-primary dropdown-toggle fs-6"
                         type="button"
                         id="dropdownMenuButton1"
                         data-bs-toggle="dropdown"

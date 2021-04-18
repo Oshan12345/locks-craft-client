@@ -16,7 +16,7 @@ const Home = () => {
         <Services />
         <h2 className="text-center m-3">Our latest projects </h2>
         <Projects />
-        <h2 className="text-center m-3">Testimonials</h2>
+        <h2 className="text-center m-5 ">Testimonials</h2>
         <Reviews />
         <h2 className="text-center m-3">Our Awesome Heros</h2>
         <TeamMember />
