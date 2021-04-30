@@ -1,13 +1,36 @@
 import React, { useContext } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { UserContext } from "../../App";
-import { googleSignIn } from "./LoginMethods";
+import { googleSignIn, login } from "./LoginMethods";
 import axios from "axios";
 const Login = () => {
   const { setUser } = useContext(UserContext);
   let history = useHistory();
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/dashboard" } };
+
+  const handleEmailLogin = (e) => {
+    e.preventDefault();
+    login("xyz@gmail.com", "123456").then((res) => {
+      if (res.name || res.email) {
+        //  setUser(res);
+        history.replace(from);
+        console.log("sssssssss----", res);
+        const { email } = res;
+        axios
+          .post("https://peaceful-fjord-47606.herokuapp.com/add-user", {
+            name: "Sagar",
+            email,
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+    });
+  };
 
   const handleGoogleSignIn = () => {
     googleSignIn().then((res) => {
@@ -110,6 +133,20 @@ const Login = () => {
             }}
           />
           Continue with google
+        </button>
+        <button
+          className="btn btn-info mt-4"
+          style={{
+            width: "100%",
+            border: "1px solid",
+            padding: 5,
+            borderRadius: 999,
+            margin: "auto",
+          }}
+          onClick={handleEmailLogin}
+        >
+          <i class="bi bi-emoji-smile-fill mx-4"></i>
+          Demo Login
         </button>
       </div>
     </div>

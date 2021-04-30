@@ -86,12 +86,15 @@ const Navbar = () => {
             {user.email && (
               <div className="fs-3">
                 <img
-                  src={user.photo}
+                  src={
+                    user?.photo ||
+                    "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+                  }
                   className="rounded-circle mx-2"
                   alt=""
-                  style={{ height: 30, width: 30 }}
+                  style={{ height: 40, width: 40 }}
                 />
-                {user.name}
+                {user.name || "Sagar"}
               </div>
             )}
           </div>
