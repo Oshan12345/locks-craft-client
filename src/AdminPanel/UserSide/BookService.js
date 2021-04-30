@@ -265,7 +265,7 @@ const BookService = () => {
                 <div className="card-header">No service selected</div>
                 <div className="card-body">
                   <p className="card-text">
-                    You need to select a service from the home page of service
+                    You need to select a service from the home page or service
                     page... please go to any of the page and select a service
                   </p>
                 </div>

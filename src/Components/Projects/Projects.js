@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import ProjectsCard from "./ProjectsCard";
 import "./project.css";
+import axios from "axios";
+import BlogCard from "../BlogComponent/BlogCard";
 const Projects = () => {
   const projectData = [
     {
@@ -55,10 +57,31 @@ const Projects = () => {
     },
   ];
 
+  const [allPost, setAllPost] = useState([]);
+
+  const contentKey = "358a24520b048a7e4c64119034";
+  const url = "https://oshan.xyz/";
+
+  useEffect(() => {
+    axios
+      .get(`${url}/ghost/api/v3/content/posts/?key=${contentKey}`)
+      .then(function (response) {
+        setAllPost(response.data.posts.slice(0, 6));
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  }, []);
+  console.log(allPost);
   return (
     <div className="row row-cols-1 row-cols-sm-3 row-cols-md-3 g-4">
-      {projectData.map((project) => (
-        <ProjectsCard project={project} key={project.id} />
+      {allPost.map((post) => (
+        <BlogCard key={post.id} post={post} />
+
+        // <ProjectsCard project={project} key={project.id} />
       ))}
     </div>
   );

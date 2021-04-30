@@ -19,6 +19,8 @@ import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import AboutUs from "./Pages/AboutUs";
 import Blog from "./Pages/Blog";
 import BlogPage from "./Components/BlogComponent/BlogPage";
+import Services from "./Components/Services/Services";
+import ServicePage from "./Pages/ServicePage";
 export const UserContext = createContext();
 function App() {
   const [user, setUser] = useState({});
@@ -60,6 +62,9 @@ function App() {
           </Route>{" "}
           <Route path="/signup">
             <Signin />
+          </Route>
+          <Route path="/all-services">
+            <ServicePage />
           </Route>
           <PrivateRoute path="/dashboard/all-bookings">
             <BookingList />

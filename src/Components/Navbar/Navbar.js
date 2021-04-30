@@ -47,6 +47,15 @@ const Navbar = () => {
                 Home
               </Link>
             </li>
+            <li className="nav-item mx-2 ">
+              <Link
+                className="nav-link active text-dark fs-3 fw-bold"
+                aria-current="page"
+                to="/all-services"
+              >
+                Service
+              </Link>
+            </li>
             <li className="nav-item mx-2">
               <Link className="nav-link text-dark fs-3 fw-bold" to="/about">
                 About

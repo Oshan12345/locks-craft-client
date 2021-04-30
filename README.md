@@ -20,6 +20,8 @@ This is simple **MERN** fullstack project.
 >> Stripe payment method is integrated. Users can use a fake credit card number to book a order.
 
 
+[]<img src="./src/images/lock2.png" width="200" height="200">
+
 
 
 Server Side code [Click here](https://github.com/Porgramming-Hero-web-course/complete-website-server-Oshan12345).
