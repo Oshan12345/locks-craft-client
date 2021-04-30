@@ -4,7 +4,7 @@ Live Site URL [Click here](https://locks-draft.netlify.app/).
 
 ## Project name - Locks-craft
 
-This is simple **MERN** fullstack project.  
+This is **MERN** fullstack project.  
 
 
 > ### Features
@@ -20,13 +20,13 @@ This is simple **MERN** fullstack project.
 >> Stripe payment method is integrated. Users can use a fake credit card number to book a order.
 
 
-[Service add page]<img src="./src/images/lock3.png" width="800" height="200" style='object-fit: contain'>  
-[Manage service page]<img src="./src/images/lock5.png" width="800" height="200" style='object-fit: contain'>  
-[Manage service page]<img src="./src/images/lock6.png" width="800" height="200" style='object-fit: contain'>  
-[User's order page page]<img src="./src/images/lock7.png" width="800" height="200" style='object-fit: contain'> 
-[Give review page]<img src="./src/images/lock8.png" width="800" height="200" style='object-fit: contain'>  
-[Booking page]<img src="./src/images/lock9.png" width="800" height="200" style='object-fit: contain'>     
+[Service add page]<img src="./src/images/lock3.png" width="800" height="350" style='object-fit: contain'>  
+[Manage service page]<img src="./src/images/lock5.png" width="800" height="350" style='object-fit: contain'>  
+[Manage service page]<img src="./src/images/lock6.png" width="800" height="350" style='object-fit: contain'>  
+[User's order page page]<img src="./src/images/lock7.png" width="800" height="350" style='object-fit: contain'> 
+[Give review page]<img src="./src/images/lock8.png" width="800" height="350" style='object-fit: contain'>  
+[Booking page]<img src="./src/images/lock9.png" width="800" height="350" style='object-fit: contain'>     
 
 
 
-Server Side code [Click here](https://github.com/Porgramming-Hero-web-course/complete-website-server-Oshan12345).
+Server Side code [Click here](https://github.com/sagar-biswas1/locks-craft-server).
