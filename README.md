@@ -20,6 +20,10 @@ This is **MERN** fullstack project.
 >> In this project a used Ghost Cms Api for fetching post that are published in my Personal Ghost CMS for experimental purpose.  
 >> Stripe payment method is integrated. Users can use a fake credit card number to book a order.  
 
+
+Server Side code [Click here](https://github.com/sagar-biswas1/locks-craft-server)  
+
+
 some screen-shots : 
 
 
@@ -31,5 +35,3 @@ some screen-shots :
 [Booking page]<img src="./src/images/lock9.png" width="800" height="350" style='object-fit: contain'>     
 
 
-
-Server Side code [Click here](https://github.com/sagar-biswas1/locks-craft-server)
