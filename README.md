@@ -4,7 +4,7 @@ Live Site URL [Click here](https://locks-draft.netlify.app/).
 
 ## Project name - Locks-craft
 
-This is simple **MERN** fullstack project.  
+This is  **MERN** fullstack project.  
 
 
 > ### Features
