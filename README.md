@@ -20,7 +20,12 @@ This is simple **MERN** fullstack project.
 >> Stripe payment method is integrated. Users can use a fake credit card number to book a order.
 
 
-[]<img src="./src/images/lock2.png" width="200" height="200">
+[Service add page]<img src="./src/images/lock3.png" width="800" height="200" style='object-fit: contain'>  
+[Manage service page]<img src="./src/images/lock5.png" width="800" height="200" style='object-fit: contain'>  
+[Manage service page]<img src="./src/images/lock6.png" width="800" height="200" style='object-fit: contain'>  
+[User's order page page]<img src="./src/images/lock7.png" width="800" height="200" style='object-fit: contain'> 
+[Give review page]<img src="./src/images/lock8.png" width="800" height="200" style='object-fit: contain'>  
+[Booking page]<img src="./src/images/lock9.png" width="800" height="200" style='object-fit: contain'>     
 
 
 
