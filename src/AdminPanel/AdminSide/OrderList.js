@@ -75,7 +75,7 @@ const OrderList = () => {
                   <td>
                     <div className="dropdown">
                       <button
-                        className="btn btn-primary dropdown-toggle fs-6"
+                        className="btn btn-primary dropdown-toggle"
                         type="button"
                         id="dropdownMenuButton1"
                         data-bs-toggle="dropdown"

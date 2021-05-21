@@ -26,7 +26,7 @@ const Blog = () => {
   return (
     <div>
       <div className="container mb-4">
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 mt-4 mb-4 g-4">
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 mt-4 mb-4 g-4 mb-5">
           {allPost.map((post) => (
             <BlogCard key={post.id} post={post} />
           ))}

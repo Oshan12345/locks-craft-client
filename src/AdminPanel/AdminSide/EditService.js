@@ -152,7 +152,7 @@ const EditService = () => {
             <input
               name="title"
               type="text"
-              className="form-control fs-4"
+              className="form-control "
               id="serviceTitle"
               placeholder={serviceDetails.title}
               onBlur={(e) => handleInputChange(e)}
@@ -165,7 +165,7 @@ const EditService = () => {
               </label>
 
               <input
-                className="form-control fs-4"
+                className="form-control "
                 type="file"
                 id="bookFile"
                 // onChange={handleImageUpload}
@@ -201,7 +201,7 @@ const EditService = () => {
               <form onSubmit={addNewCategory}>
                 <input
                   type="text"
-                  className="form-control m-2 fs-4"
+                  className="form-control m-2 "
                   placeholder="add a new category"
                   required
                   name="categoryName"
@@ -209,7 +209,7 @@ const EditService = () => {
                 />
                 <input
                   type="number"
-                  className="form-control m-2 fs-4"
+                  className="form-control m-2 "
                   placeholder="Add a price"
                   min="1"
                   required
@@ -219,7 +219,7 @@ const EditService = () => {
                 <div className="d-flex justify-content-center m-3">
                   {" "}
                   <input
-                    className="btn btn-info fs-4"
+                    className="btn btn-info "
                     type="submit"
                     // onClick={addNewCategory}
                   />{" "}
@@ -258,13 +258,13 @@ const EditService = () => {
       <div className="col-12 d-flex justify-content-between p-4 mb-5">
         <button
           type="submit"
-          className="btn btn-primary fs-4"
+          className="btn btn-primary "
           onClick={handleSubmit}
         >
           Update
         </button>
         <button
-          className="btn btn-primary fs-4"
+          className="btn btn-primary"
           onClick={() => window.history.go(-1)}
         >
           Go back

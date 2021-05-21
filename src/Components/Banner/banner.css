@@ -1,43 +1,33 @@
-
-.home-page-banner{
-  background:linear-gradient(to bottom, #310dfd70,white ),url('../../images/bg2.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-   background-attachment: fixed;
-}
-.home-page-banner-card-body{
-    background:linear-gradient(to left, #0a228a71 0%, #1136664f 100%);
-    padding:10px;
-    color:white
+.banner-div{
+  position: relative;
+  
 }
 
-.home-page-banner-card-body h2 {
 
-     text-transform: uppercase;
-    color: white;
-background:linear-gradient(to right, #31395c 0%, #1737c5 100%);
-border: 1px solid #1D9AF2;
-border-radius: 4px;
-padding: 10px 20px;
-text-align: center;
-height:100px;
-font-style: italic;
-transition: all 0.2s ease-in-out;
+.banner{  
+  width: 100%; 
+    height: 400px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    background-size: cover;    
+    filter: blur(3px);
+  -webkit-filter: blur(3px);
+
 }
-.banner-button{
-     text-transform: uppercase;
-    color: white;
-background:linear-gradient(to right, #31395c 0%, #314291 100%);
-border: 1px solid #1D9AF2;
-border-radius: 4px;
-padding: 5px 20px;
-cursor: pointer;
-height:40px;
-font-size:18px;
-transition: all 0.2s ease-in-out;
+
+.children{
+  max-width: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #26262d85;
+  padding: 20px;
+  border-radius: 10px;
 }
-.banner-button:hover{
-    box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
-transform: translateX(-3px);
-}
+
+
+/* this property can be used for linear background....
+         background: linear-gradient( transparent,transparent, #01404b),
+      url("https://st2.depositphotos.com/3725083/5374/i/450/depositphotos_53743487-stock-photo-football-stadium.jpg") ; */

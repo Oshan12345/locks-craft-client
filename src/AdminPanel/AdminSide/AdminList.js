@@ -79,7 +79,7 @@ const AdminList = () => {
                   <td className="p-5">
                     <div className="dropdown">
                       <button
-                        className="btn btn-primary dropdown-toggle p-2 fs-5"
+                        className="btn btn-primary dropdown-toggle p-2 "
                         type="button"
                         id="dropdownMenuButton1"
                         data-bs-toggle="dropdown"

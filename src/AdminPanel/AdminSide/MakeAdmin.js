@@ -36,7 +36,7 @@ const MakeAdmin = () => {
       >
         <form className="d-flex" onSubmit={handleMakeAdmin}>
           <input
-            className="form-control-sm me-2 fs-4"
+            className="form-control-sm me-2 "
             type="email"
             placeholder="Search"
             aria-label="Email"

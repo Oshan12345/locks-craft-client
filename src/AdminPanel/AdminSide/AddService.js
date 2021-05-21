@@ -71,7 +71,7 @@ const AddService = () => {
             <input
               name="title"
               type="text"
-              className="form-control fs-5"
+              className="form-control "
               id="serviceTitle"
               required
               onBlur={(e) => handleInputChange(e)}
@@ -84,7 +84,7 @@ const AddService = () => {
             <input
               name="categoryName"
               type="text"
-              className="form-control fs-5"
+              className="form-control "
               id="serviceCategory"
               required
               placeholder="ex: Card access and keypad locking service"
@@ -99,7 +99,7 @@ const AddService = () => {
               name="price"
               type="number"
               min={1}
-              className="form-control fs-5"
+              className="form-control "
               id="servicePrice"
               required
               onBlur={(e) => handleInputChange(e)}
@@ -112,7 +112,7 @@ const AddService = () => {
               </label>
 
               <input
-                className="form-control fs-5"
+                className="form-control "
                 type="file"
                 id="serviceImage"
                 required

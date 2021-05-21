@@ -41,7 +41,7 @@ const MemberCard = () => {
       <div className="col">
         <div className="card h-100  bg-warning">
           <img
-            src={stuffImg}
+            src="https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
             className="card-img-top"
             alt="..."
             style={imageStyle}
@@ -58,7 +58,7 @@ const MemberCard = () => {
       <div className="col">
         <div className="card h-100  bg-warning">
           <img
-            src={stuffImg}
+            src="https://images.pexels.com/photos/3863793/pexels-photo-3863793.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
             className="card-img-top"
             alt="..."
             style={imageStyle}
@@ -75,7 +75,7 @@ const MemberCard = () => {
       <div className="col">
         <div className="card h-100  bg-warning ">
           <img
-            src={stuffImg}
+            src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
             className="card-img-top "
             alt="..."
             style={imageStyle}

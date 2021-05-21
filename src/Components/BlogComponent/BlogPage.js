@@ -22,7 +22,11 @@ const BlogPage = () => {
       });
   }, [postId]);
 
-  return <div dangerouslySetInnerHTML={{ __html: post.html }}></div>;
+  return (
+    <div className="container mt-5">
+      <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
+    </div>
+  );
 };
 
 export default BlogPage;

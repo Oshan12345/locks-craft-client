@@ -39,14 +39,14 @@ const ContactUsForm = () => {
           <div className="row mb-3">
             <label
               htmlFor="inputName"
-              className="col-sm-2 col-form-label col-form-label-sm fs-4"
+              className="col-sm-2 col-form-label col-form-label-sm "
             >
               Name
             </label>
             <div className="col-sm-10">
               <input
                 type="name"
-                className="form-control form-control-sm fs-4"
+                className="form-control form-control-sm "
                 id="inputName"
                 placeholder="enter your name"
               />
@@ -55,14 +55,14 @@ const ContactUsForm = () => {
           <div className="row mb-3">
             <label
               htmlFor="colFormLabelSm"
-              className="col-sm-2 col-form-label col-form-label-sm fs-4"
+              className="col-sm-2 col-form-label col-form-label-sm"
             >
               Email
             </label>
             <div className="col-sm-10">
               <input
                 type="email"
-                className="form-control form-control-sm fs-4"
+                className="form-control form-control-sm "
                 id="colFormLabelSm"
                 placeholder="enter your email"
               />

@@ -9,22 +9,27 @@ const Login = () => {
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/dashboard" } };
 
-  const handleEmailLogin = (e) => {
+  const handleEmailLogin = (e, gmail) => {
     e.preventDefault();
-    login("xyz@gmail.com", "123456").then((res) => {
+    login(gmail, "123456").then((res) => {
       if (res.name || res.email) {
-        //  setUser(res);
+        let userDetails = {
+          name: "Sagar",
+          email: res.email,
+          photo:
+            "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        };
+
+        setUser(userDetails);
         history.replace(from);
-        console.log("sssssssss----", res);
+
         const { email } = res;
         axios
           .post("https://peaceful-fjord-47606.herokuapp.com/add-user", {
             name: "Sagar",
             email,
           })
-          .then(function (response) {
-            console.log(response);
-          })
+          .then(function (response) {})
           .catch(function (error) {
             console.log(error);
           });
@@ -42,9 +47,7 @@ const Login = () => {
           name,
           email,
         })
-        .then(function (response) {
-          console.log(response);
-        })
+        .then(function (response) {})
         .catch(function (error) {
           console.log(error);
         });
@@ -138,15 +141,29 @@ const Login = () => {
           className="btn btn-info mt-4"
           style={{
             width: "100%",
-            border: "1px solid",
+            border: "1px solid #0099b8",
             padding: 5,
             borderRadius: 999,
             margin: "auto",
           }}
-          onClick={handleEmailLogin}
+          onClick={(e) => handleEmailLogin(e, "xyz@gmail.com")}
         >
           <i class="bi bi-emoji-smile-fill mx-4"></i>
-          Demo Login
+          Demo Login(User)
+        </button>
+        <button
+          className="btn btn-info mt-4"
+          style={{
+            width: "100%",
+            border: "1px solid #0099b8",
+            padding: 5,
+            borderRadius: 999,
+            margin: "auto",
+          }}
+          onClick={(e) => handleEmailLogin(e, "admin@gmail.com")}
+        >
+          <i class="bi bi-emoji-smile-fill mx-4"></i>
+          Demo Login(Admin) <br /> Please try with your own input...
         </button>
       </div>
     </div>
