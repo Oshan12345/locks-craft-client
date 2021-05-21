@@ -20,6 +20,9 @@ const ServiceCard = ({ service }) => {
             <h5 className="card-title">{title}</h5>
             <p className="card-text">{description}</p>
           </div>
+          <p className=" btn btn-primary m-auto mt-2 mb-2 ">
+            <i className="bi bi-cart-check-fill"></i> Book Now
+          </p>
         </div>
       </Link>
     </div>
